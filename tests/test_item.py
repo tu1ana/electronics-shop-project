@@ -31,6 +31,16 @@ class TestItem:
         item = Item.all[0]
         assert item.name == 'Смартфон'
 
+    def test_repr(self):
+        item = Item('Headset', 4000, 10)
+        item.__repr__()
+        assert repr(item) == "Item('Headset', 4000, 10)"
+
+    def test_str(self):
+        item = Item('Headset', 4000, 10)
+        item.__str__()
+        assert str(item) == 'Headset'
+
 
 @pytest.mark.parametrize('value, expected', [('5', 5), ('5.0', 5), ('5.5', 5)])
 def test_string_to_number(value, expected):
