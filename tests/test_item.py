@@ -2,6 +2,7 @@
 import pytest
 
 from src.item import Item
+from src.phone import Phone
 
 
 class TestItem:
@@ -40,6 +41,14 @@ class TestItem:
         item = Item('Headset', 4000, 10)
         item.__str__()
         assert str(item) == 'Headset'
+
+    def test_add(self):
+        item = Item('Computer', 60000, 20)
+        phone = Phone('iPhone 2G', 3000, 4, 1)
+        assert item.__add__(phone) == 24
+
+        with pytest.raises(ValueError, match='Only able to add together Item and/ or its subclass instances'):
+            item.__add__(2000)
 
 
 @pytest.mark.parametrize('value, expected', [('5', 5), ('5.0', 5), ('5.5', 5)])
