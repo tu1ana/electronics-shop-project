@@ -28,6 +28,11 @@ class Item:
     def __str__(self):
         return f'{self.name}'
 
+    def __add__(self, other):
+        if isinstance(other, self.__class__):
+            return self.quantity + other.quantity
+        raise ValueError('Only able to add together Item and/ or its subclass instances')
+
     def calculate_total_price(self) -> float:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
@@ -58,9 +63,10 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls):
         cls.all = []
-        new_path = os.path.relpath('..//src//items.csv')
+        # new_path = os.path.relpath('..//src//items.csv')
+        path_to_file = os.path.join(os.path.dirname(__file__), 'items.csv')
 
-        with open(new_path, 'r', encoding='cp1251') as csvfile:
+        with open(path_to_file, 'r', encoding='cp1251') as csvfile:
             reader = csv.DictReader(csvfile)
             data = list(reader)
             for line in data:
