@@ -1,3 +1,5 @@
+import pytest
+
 from src.phone import Phone
 
 
@@ -17,3 +19,12 @@ def test_repr():
 def test_str():
     phone3 = Phone('Nokia 3310', 3000, 2, 1)
     assert str(phone3) == 'Nokia 3310'
+
+
+def test_number_of_sim():
+    phone3 = Phone('Nokia 3310', 3000, 2, 1)
+    phone3.number_of_sim = 1
+
+    phone4 = Phone('Rotary_Dial', 1000, 2, 0)
+    with pytest.raises(ValueError):
+        phone4.number_of_sim = 0
