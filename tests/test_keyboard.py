@@ -19,9 +19,3 @@ def test_change_lang():
 
     k.change_lang().change_lang()
     assert str(k.language) == 'RU'
-
-# def test_keyboard_layout():
-#     k = Keyboard('Dark Project KD87A', 9600, 5)
-#     assert k.name == 'Dark Project KD87A'
-#     assert k.price == 9600
-#     assert k.quantity == 5
