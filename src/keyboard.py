@@ -13,10 +13,10 @@ class KeyboardLayout:
         return self.__language
 
     def change_lang(self):
-        if self.language:
+        if self.language == 'EN':
             self.__language = 'RU'
-        else:
-            return self.language
+        elif self.language == 'RU':
+            self.__language = 'EN'
         return self
 
 
