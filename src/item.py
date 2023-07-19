@@ -64,11 +64,10 @@ class Item:
             self.__name = new_name
 
     @classmethod
-    def instantiate_from_csv(cls):
+    def instantiate_from_csv(cls, path_to_file='../src/items.csv'):
         cls.all = []
         # path_to_file = os.path.relpath('..//src//items.csv')
-        path_to_file = os.path.join(os.path.dirname(__file__), 'items.csv')
-
+        # path_to_file = os.path.join(os.path.dirname(__file__), 'items.csv')
         try:
             with open(path_to_file, 'r', encoding='cp1251') as csvfile:
                 reader = csv.DictReader(csvfile)
